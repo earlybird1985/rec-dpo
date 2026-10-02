@@ -1,0 +1,45 @@
+dataset: amazon
+category: Video_Games
+raw_dir: data/raw
+processed_dir: data/processed
+# Used when candidates_train.parquet and items.parquet exist; otherwise download Amazon.
+a4_processed_dir: ../llm-reranking/data/processed
+# Optional A1 item2idx, used only on the own-download path. Copy verbatim; do not rebuild.
+a1_processed_dir: null
+# A4 LoRA directory. Null → reference policy is the base Instruct model.
+sft_adapter: null
+
+k_core: 5
+max_history_len: 20
+n_cand: 50
+inject_target_at_eval: false
+negatives_per_positive: 4
+max_train_examples: null
+sample_users: null
+seed: 42
+
+model_name: Qwen/Qwen2.5-1.5B-Instruct
+load_in_4bit: true              # forced off on macOS
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+max_length: 1024
+max_prompt_length: 768
+beta: 0.1
+num_train_epochs: 1
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 8
+learning_rate: 0.000005         # DPO, not A4's SFT 2e-4
+warmup_ratio: 0.05
+max_grad_norm: 1.0
+gradient_checkpointing: true
+
+k_list: [5, 10, 20]
+max_eval_users: null
+max_eval_pairs: null
+max_title_chars: 160
+
+use_wandb: false
+wandb_project: rec-dpo
+wandb_run_name: dpo-video-games
+output_dir: checkpoints/dpo

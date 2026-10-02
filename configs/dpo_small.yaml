@@ -1,0 +1,43 @@
+# Smoke config. Metrics are not comparable to configs/dpo.yaml.
+dataset: amazon
+category: Video_Games
+raw_dir: data/raw
+processed_dir: data/processed_small
+a4_processed_dir: ../llm-reranking/data/processed
+a1_processed_dir: null
+sft_adapter: null
+
+k_core: 5
+max_history_len: 10
+n_cand: 10
+inject_target_at_eval: false
+negatives_per_positive: 2
+max_train_examples: 400
+sample_users: 200
+seed: 42
+
+model_name: Qwen/Qwen2.5-1.5B-Instruct
+load_in_4bit: false
+lora_r: 8
+lora_alpha: 16
+lora_dropout: 0.05
+max_length: 512
+max_prompt_length: 384
+beta: 0.1
+num_train_epochs: 1
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 0.000005
+warmup_ratio: 0.05
+max_grad_norm: 1.0
+gradient_checkpointing: true
+
+k_list: [5, 10]
+max_eval_users: 32
+max_eval_pairs: 64
+max_title_chars: 80
+
+use_wandb: false
+wandb_project: rec-dpo
+wandb_run_name: dpo-small-smoke
+output_dir: checkpoints/dpo_small

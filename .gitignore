@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Data (regeneratable via data/prepare_preferences.py)
+data/raw/
+data/processed*/
+
+# Model artifacts
+checkpoints/
+*.pt
+*.ckpt
+*.safetensors
+adapter_model.bin
+
+# Hugging Face / caches
+.cache/
+hf_home/
+
+# Logs / experiment tracking
+*.log
+wandb/
+
+# OS
+.DS_Store
+
+# Notebooks
+.ipynb_checkpoints/

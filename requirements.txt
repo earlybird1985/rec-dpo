@@ -1,0 +1,16 @@
+torch>=2.2
+pandas>=2.0
+numpy>=1.24
+pyarrow>=14.0
+pyyaml>=6.0
+tqdm>=4.66
+transformers>=4.45
+peft>=0.13
+trl>=0.12
+accelerate>=1.0
+datasets>=3.0
+# CUDA Linux only — omit / set load_in_4bit: false on macOS (see README)
+bitsandbytes>=0.43; sys_platform == "linux"
+wandb>=0.16
+matplotlib>=3.8
+jupyter>=1.0
